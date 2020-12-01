@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   },
   genreText: {
     fontSize: 9, 
-    opacity: 0.4
+    opacity: 0.4,
+    color:'black',
   }
 });
