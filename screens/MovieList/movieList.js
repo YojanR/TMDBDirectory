@@ -76,12 +76,20 @@ export default function MovieList({navigation}) {
               <TouchableOpacity
                 style={{
                   marginHorizontal: SPACING,
-                  padding: SPACING,
                   alignItems: 'center',
                   backgroundColor: 'black',
                   borderRadius: 5,
                 }}
-                onPress={() => navigation.navigate('MovieDetail', { item: item })}
+                onPress={() => navigation.navigate('MovieDetail', { 
+                  key: item.key,
+                  title: item.title,
+                  poster: item.poster,
+                  backdrop: item.backdrop,
+                  rating: item.rating,
+                  description: item.description,
+                  releaseDate: item.releaseDate,
+                  genres: item.genres,
+                })}
               >
                 <Image
                   source={{ uri: item.poster }}
@@ -117,7 +125,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: ITEM_SIZE * 1.2,
     resizeMode: 'cover',
-    borderRadius: 24,
+    borderRadius: 10,
     margin: 0,
     marginBottom: 10,
   },

@@ -9,19 +9,18 @@ import {
   ImageBackground,
 } from 'react-native';
 const { width, height } = Dimensions.get('window');
-import { getMovies } from '../src/api';
 import Genres from '../src/GenresForDetails';
 import { LinearGradient } from 'expo-linear-gradient';
 
-const SPACING = 10;
 const ITEM_SIZE = width;
 const BACKDROP_HEIGHT = height ;
 
-export default function MovieDetails() {
+export default function MovieDetails({ route, navigation }) {
+  const { key, title, poster, releaseDate, rating, description, genres } = route.params;
   return (
     <View style={{ width: ITEM_SIZE, backgroundColor:'white' }}>
       <ImageBackground
-        source={{ uri: 'https://image.tmdb.org/t/p/w440_and_h660_face/4ZocdxnOO6q2UbdKye2wgofLFhB.jpg' }}
+        source={{ uri: poster}}
         style={{
           width,
           height: BACKDROP_HEIGHT,
@@ -37,29 +36,19 @@ export default function MovieDetails() {
           bottom: 0,
         }}
       />
-      
       <View style={{flex: 1, justifyContent: 'flex-end'}}>
-      <Text style={{ fontSize: 24, justifyContent:'center'}} numberOfLines={3}>
-        Titulo
+      <Text style={{ fontSize: 24}} numberOfLines={1}>
+        {title}
       </Text>
-      <Text style={{ fontSize: 12 }} numberOfLines={1}>
-        Calificación:
+      <Text style={{ fontSize: 14 }} numberOfLines={1}>
+        Calificación: {rating}
       </Text>
-      <Text>Géneros:</Text>
-      <Text style={{ fontSize: 12 }} numberOfLines={2}>
-        Fecha de estreno:
+      <Genres genres={genres} />
+      <Text style={{ fontSize: 14 }} numberOfLines={2}>
+        Fecha de estreno: {releaseDate}
       </Text>
-      <Text style={{ fontSize: 12 }} numberOfLines={1}>
-        Calificación:
-      </Text>
-      <Text style={{ fontSize: 12 }} numberOfLines={1}>
-        Calificación:
-      </Text>
-      <Text style={{ fontSize: 12 }} numberOfLines={1}>
-        Calificación:
-      </Text>
-      <Text style={{ fontSize: 12 }} numberOfLines={20}>
-        Descripción:
+      <Text style={{ fontSize: 14 }} numberOfLines={20}>
+        Descripción: {description}
        </Text>
       <Text style={{ fontSize: 24 }} numberOfLines={20}>
        </Text>

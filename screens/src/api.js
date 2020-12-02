@@ -22,7 +22,6 @@ const genres = {
 };
 
 const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=es`;
-const DETAILS_URL = `https://api.themoviedb.org/3/movie/613504?api_key=${API_KEY}&language=es`;
 const getImagePath = (path) =>
   `https://image.tmdb.org/t/p/w440_and_h660_face${path}`;
 const getBackdropPath = (path) =>
@@ -43,33 +42,6 @@ export const getMovies = async () => {
     }) => ({
       key: String(id),
       title: title,
-      poster: getImagePath(poster_path),
-      backdrop: getBackdropPath(backdrop_path),
-      rating: vote_average,
-      description: overview,
-      releaseDate: release_date,
-      genres: genre_ids.map((genre) => genres[genre]),
-    })
-  );
-
-  return movies;
-};
-
-export const getMovieDetails = async () => {
-  const { results } = await fetch(API_URL).then((x) => x.json());
-  const movies = results.map(
-    ({
-      id,
-      original_title,
-      poster_path,
-      backdrop_path,
-      vote_average,
-      overview,
-      release_date,
-      genre_ids,
-    }) => ({
-      key: String(id),
-      title: original_title,
       poster: getImagePath(poster_path),
       backdrop: getBackdropPath(backdrop_path),
       rating: vote_average,

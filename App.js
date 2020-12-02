@@ -21,12 +21,12 @@ export default function App() {
         }} name='MovieList' component={MovieList} />
         <Stack.Screen options={{
           headerTitle: '',
-          headerTintColor: 'blue',
+          headerTintColor: 'white',
           headerBackTitle: true,
           headerStyle:{
             backgroundColor:'black'
           }
-        }} name='MovieDetail' component={MovieDetail}  />
+        }} name='MovieDetail' component={MovieDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );
